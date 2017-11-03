@@ -326,8 +326,7 @@ double JSONObject::doubleValue(const char* name, double dv){
     cJSON* json = cJSON_GetObjectItem(m_root, name);
     if (json != NULL && json->type==cJSON_Number) {
         return json->valuedouble;
-    }
-    else{
+    } else {
         return dv;
     }
 }
@@ -336,11 +335,9 @@ bool_t JSONObject::boolValue(const char* name){
     cJSON* json = cJSON_GetObjectItem(m_root, name);
     if (json != NULL && json->type==cJSON_True) {
         return BS_TRUE;
-    }
-    else if(json != NULL && json->type==cJSON_True){
+    } else if (json != NULL && json->type==cJSON_False) {
         return BS_FALSE;
-    }
-    else{
+    } else{
         return BS_NOTBOOL;
     }
 }
