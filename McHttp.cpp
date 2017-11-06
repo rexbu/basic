@@ -364,7 +364,7 @@ void *thread_post_data(void *para) {
 
 void thread_http_response(http_res_t *res, HttpSession *session) {
     if (res->response_code < 0) {
-        const char *error = "http connect error!";
+        const char *error = "网络连接失败，请稍后再试";
         if (res->response_code == BS_TIMEOUT) {
             error = "http time-out";
         }
