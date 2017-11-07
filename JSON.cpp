@@ -335,11 +335,13 @@ bool_t JSONObject::boolValue(const char* name){
     cJSON* json = cJSON_GetObjectItem(m_root, name);
     if (json != NULL && json->type==cJSON_True) {
         return BS_TRUE;
-    } else if (json != NULL && json->type==cJSON_False) {
-        return BS_FALSE;
-    } else{
-        return BS_NOTBOOL;
+    } else if (json != NULL && json->type==cJSON_Number) {
+        if (json->valueint != 0) {
+            return BS_TRUE;
+        }
     }
+  
+  return BS_FALSE;
 }
 
 const char* JSONObject::stringValue(const char* name){
