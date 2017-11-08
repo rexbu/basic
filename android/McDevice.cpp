@@ -26,7 +26,7 @@ void mc::mc_set_device(JNIEnv *env, jobject thiz, jobject context) {
     jclass deviceClass = env->FindClass("com/rex/utils/DeviceUtil");
     const char *s = NULL;
 
-    jmethodID method = env->GetStaticMethodID(deviceClass, "getDeviceId",
+    jmethodID method = env->GetStaticMethodID(deviceClass, "deviceId",
                                               "(Landroid/content/Context;)Ljava/lang/String;");
     jstring deviceid = (jstring) env->CallStaticObjectMethod(deviceClass, method, context);
     if (deviceid != NULL) {
@@ -63,15 +63,6 @@ void mc::mc_set_device(JNIEnv *env, jobject thiz, jobject context) {
     fclose(fp);
     debug_log("PackageName: %s", package);
     g_packagename = package;
-    // method = env->GetStaticMethodID(deviceClass, "getPackageName", "(Landroid/content/Context;)Ljava/lang/String;");
-    // deviceid = (jstring)env->CallStaticObjectMethod(deviceClass, method, context);
-    // if (deviceid!=NULL)
-    // {
-    // 	s = env->GetStringUTFChars(deviceid, NULL);
-    // 	debug_log("PackageName: %s", s);
-    // 	g_package_name = s;
-    // 	env->ReleaseStringUTFChars(deviceid, s);
-    // }
 
     method = env->GetStaticMethodID(deviceClass, "getDeviceModel", "()Ljava/lang/String;");
     deviceid = (jstring) env->CallStaticObjectMethod(deviceClass, method, context);
