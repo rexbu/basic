@@ -299,9 +299,9 @@ void *thread_http(void *para) {
 
     // http->http会在http_perform中被删除
     free(arg);
+    bs_delete(http->http);
     bs_delete(http);
     bs_delete(res);
-
     return NULL;
 }
 
@@ -327,8 +327,9 @@ void *thread_down(void *para) {
         down->file_callback->done(res->response_code, res->response_code, res->body);
     }
     // http->http会在http_perform中被删除
+    bs_delete(down->http);
     bs_delete(down);
-
+    bs_delete(res);
     return NULL;
 }
 
@@ -341,8 +342,9 @@ void *thread_up_file(void *para) {
         thread_http_response(res, NULL);
         up->file_callback->done(res->response_code, res->response_code, res->body);
     }
+    bs_delete(up->http);
     bs_delete(up);
-
+    bs_delete(res);
     return NULL;
 }
 
@@ -357,6 +359,7 @@ void *thread_post_data(void *para) {
         up->file_callback->done(res->response_code, res->response_code, res->body);
     }
     free(arg);
+    bs_delete(up->http);
     bs_delete(up);
     bs_delete(res);
     return NULL;
