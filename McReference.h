@@ -32,7 +32,7 @@ namespace mc {
         bool unLock(){
             if (m_is_reference && m_referencecount<=0)
             {
-                err_log("unlock error! referencecount[%d]", m_referencecount);
+//                err_log("unlock error! referencecount[%d]", m_referencecount);
                 return false;
             }
             
