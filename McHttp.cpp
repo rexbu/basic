@@ -93,7 +93,7 @@ void *thread_post_data(void *para);
 
 void thread_http_response(http_res_t *res, HttpSession *session);
 
-uint32_t HttpSession::http_timeout = 20;
+uint32_t HttpSession::http_timeout = 5;
 bool HttpSession::http_show_log = false;
 
 HttpSession::HttpSession(void *threadpool) {
