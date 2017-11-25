@@ -278,12 +278,12 @@ void HttpSession::clearCookie() {
 }
 
 void HttpSession::display_http_log(const char *log) {
-#if DEBUG
-    if (http_show_log) {
+//#if DEBUG
+//    if (http_show_log) {
         info_log("%s", log);
-    }
-#else
-#endif
+//    }
+//#else
+//#endif
 }
 
 #pragma --mark "http回调及线程"
@@ -373,6 +373,8 @@ void thread_http_response(http_res_t *res, HttpSession *session) {
         }
         
         res->body = (char *)error;
+        session->display_http_log(res->body);
+        return;
     } else {
         if (session != NULL) {
             res->cookie = bs_strrstr(res->response.mem, "\r\nSet-Cookie");
