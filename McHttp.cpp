@@ -278,12 +278,12 @@ void HttpSession::clearCookie() {
 }
 
 void HttpSession::display_http_log(const char *log) {
-//#if DEBUG
-//    if (http_show_log) {
+#if DEBUG
+    if (http_show_log) {
         info_log("%s", log);
-//    }
-//#else
-//#endif
+    }
+#else
+#endif
 }
 
 #pragma --mark "http回调及线程"
