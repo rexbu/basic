@@ -1,7 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_CFLAGS += -D__ANDROID__ -g
+LOCAL_CFLAGS += -D__ANDROID__ -g -DDEBUG
 #APP_PLATFORM := android-19
 
 LOCAL_C_INCLUDES =	\
